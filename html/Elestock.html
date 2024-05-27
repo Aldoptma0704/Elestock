@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELESTOCK - Sistem Manajemen Stok Barang Elektronik</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ELESTOCK</h1>
+        <nav>
+            <ul>
+                <li><a href="#inventory">Manajemen Inventaris</a></li>
+                <li><a href="#orders">Pemesanan Komponen</a></li>
+                <li><a href="#shipments">Pengiriman Produk</a></li>
+                <li><a href="#monitoring">Monitoring Stok</a></li>
+                <li><a href="#reports">Analisis dan Laporan</a></li>
+                <li><a href="#suppliers">Manajemen Supplier</a></li>
+                <li><a href="#storage">Manajemen Lokasi Penyimpanan</a></li>
+                <li><a href="#integration">Integrasi Sistem Produksi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inventory">
+            <h2>Manajemen Inventaris Elektronik</h2>
+            <form id="addProductForm">
+                <label for="productName">Nama Produk:</label>
+                <input type="text" id="productName" name="productName">
+                <label for="productCategory">Kategori:</label>
+                <input type="text" id="productCategory" name="productCategory">
+                <label for="productQuantity">Kuantitas:</label>
+                <input type="number" id="productQuantity" name="productQuantity">
+                <label for="productPrice">Harga:</label>
+                <input type="number" id="productPrice" name="productPrice">
+                <button type="submit">Tambah Produk</button>
+            </form>
+            <div id="productList">
+                <h3>Daftar Produk</h3>
+                <!-- Daftar produk akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="orders">
+            <h2>Pemesanan dan Penerimaan Komponen</h2>
+            <form id="orderForm">
+                <label for="componentName">Nama Komponen:</label>
+                <input type="text" id="componentName" name="componentName">
+                <label for="supplier">Supplier:</label>
+                <input type="text" id="supplier" name="supplier">
+                <label for="quantity">Kuantitas:</label>
+                <input type="number" id="quantity" name="quantity">
+                <button type="submit">Buat Pesanan</button>
+            </form>
+            <div id="orderList">
+                <h3>Daftar Pesanan</h3>
+                <!-- Daftar pesanan akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="shipments">
+            <h2>Pengiriman Produk Jadi</h2>
+            <form id="shipmentForm">
+                <label for="shipmentProduct">Produk:</label>
+                <input type="text" id="shipmentProduct" name="shipmentProduct">
+                <label for="customer">Pelanggan:</label>
+                <input type="text" id="customer" name="customer">
+                <label for="shipmentDate">Tanggal Pengiriman:</label>
+                <input type="date" id="shipmentDate" name="shipmentDate">
+                <button type="submit">Buat Pengiriman</button>
+            </form>
+            <div id="shipmentList">
+                <h3>Daftar Pengiriman</h3>
+                <!-- Daftar pengiriman akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="monitoring">
+            <h2>Monitoring Stok secara Real-time</h2>
+            <div id="stockDashboard">
+                <h3>Dashboard Stok</h3>
+                <!-- Dashboard stok akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="reports">
+            <h2>Analisis dan Laporan</h2>
+            <div id="reportList">
+                <h3>Laporan</h3>
+                <!-- Laporan analisis akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="suppliers">
+            <h2>Manajemen Supplier Elektronik</h2>
+            <form id="supplierForm">
+                <label for="supplierName">Nama Supplier:</label>
+                <input type="text" id="supplierName" name="supplierName">
+                <label for="supplierContact">Kontak:</label>
+                <input type="text" id="supplierContact" name="supplierContact">
+                <button type="submit">Tambah Supplier</button>
+            </form>
+            <div id="supplierList">
+                <h3>Daftar Supplier</h3>
+                <!-- Daftar supplier akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="storage">
+            <h2>Manajemen Lokasi Penyimpanan</h2>
+            <form id="storageForm">
+                <label for="storageLocation">Lokasi Penyimpanan:</label>
+                <input type="text" id="storageLocation" name="storageLocation">
+                <button type="submit">Tambah Lokasi</button>
+            </form>
+            <div id="storageList">
+                <h3>Daftar Lokasi Penyimpanan</h3>
+                <!-- Daftar lokasi penyimpanan akan ditampilkan di sini -->
+            </div>
+        </section>
+
+        <section id="integration">
+            <h2>Integrasi dengan Sistem Produksi</h2>
+            <div id="integrationDetails">
+                <h3>Detail Integrasi</h3>
+                <!-- Detail integrasi sistem produksi akan ditampilkan di sini -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ELESTOCK. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
