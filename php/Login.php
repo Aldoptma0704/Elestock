@@ -5,59 +5,36 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST['username'];
-    $password = $_POST['passwird'];
+    $password = $_POST['password'];
 
-    $sql = "SELECT * FROM elestock WHERE username = ?";
-    $stmt = $con->prepare("sql");
-    $stmt->bin_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    if(!empty($username) && !empty($password)){
+        $sql = "SELECT * FROM users WHERE username=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($result->num_rows > 0){
-        $user = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            if (password_verify($password, $row['password'])) {
+                $_SESSION['login_user'] = $username;
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['is_admin'] = $row['is_admin'];
 
-        if (password_verify($password, $user['password'])){
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
-
-
-            switch ($role) {
-                case 'manager_inventaris':
-                    header("Location: manager_inventaris.php");
-                    break;
-                case 'manager_logistik':
-                    header("Location: manager_logistik.php");
-                    break;
-                case 'manager_pengiriman':
-                    header("Location: manager_pengiriman.php");
-                    break;
-                case 'manager_gudang':
-                    header("Location: manager_gudang.php");
-                    break;
-                case 'manager_pembelian':
-                    header("Location: manager_pembelian.php");
-                    break;
-                case 'analis_data':
-                    header("Location: analis_data.php");
-                    break;
-                case 'pengguna_produksi':
-                    header("Location: pengguna_produksi.php");
-                    break;
-                case 'pelanggan':
-                    header("Location: pelanggan_dashboard.php");
-                    break;
-                case 'supplier':
-                    header("Location: supplier_dashboard.php");
-                    break;
-                default:
-                    echo "Invalid role!";
+                if ($row['is_admin'] == 1) {
+                    header("Location: dashboard.php"); //ke admin
+                } else {
+                    header("Location: HomePage.php"); //ke user
+                }
+                exit();
+            } else {
+                $error = "Invalid password.";
             }
-        } else {
-            echo "Invalid username or password!";
+        }else{
+            $error = "No user found";
         }
-    
-        $stmt->close();
-        $conn->close();
+    }else{
+        $erorr = "Please enter both username and password.";
     }
 }
 ?>
@@ -82,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <h3>Login User</h3>
                 <h5>Sign in with your email/username and password</h5>
                 <label for="username" class="form-label">Email/Username*</label>
-                <input type="text" id="username" name="username" class="form-input" placeholder="Email/Usernma" required>
+                <input type="text" id="username" name="username" class="form-input" placeholder="Email/Username" required>
         
                 <label for="password" class="form-label">password*</label>
                 <input type="text" id="password" name="password" class="form-input" placeholder="password" required>

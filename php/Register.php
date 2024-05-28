@@ -2,21 +2,31 @@
 include('Koneksi.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $role = $_POST['role'];
+    $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
 
-    $sql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $username, $password, $role);
-
-    if ($stmt->execute()) {
-        echo "Registration successful!";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    if (empty($email)) {
+        die("Email is required");
     }
 
-    $stmt->close();
+    if ($password !== $confirmPassword){
+        die("Passwords do not match");
+    } else {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+
+        if ($stmt->execute()) {
+            header("Location: Login.php");
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+        $stmt->close();
+    }
     $conn->close();
 }
 ?>
@@ -34,21 +44,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="register.php" method="post">
             <label for="username" class="form-label">Username*</label>
             <input type="text" id="username" name="username" class="form-input" placeholder="username" required>
+            <label for="email" class="form-label">Email*</label>
+            <input type="text" id="email" name="email" class="form-input" placeholder="email" required>
             <label for="password" class="form-label">Password*</label>
             <input type="password" id="password" name="password" class="form-input" placeholder="password" required>
-            <label for="role" class="form-label">Role*</label>
-            <select id="role" name="role" class="form-input" required>
-                <option value="pelanggan">Pelanggan</option>
-                <option value="supplier">Supplier</option>
-                <option value="manager_inventaris">Manajer Inventaris</option>
-                <option value="manager_logistik">Manajer Logistik</option>
-                <option value="manager_pengiriman">Manajer Pengiriman</option>
-                <option value="manager_gudang">Manajer Gudang</option>
-                <option value="manager_pembelian">Manajer Pembelian</option>
-                <option value="analis_data">Analisis Data</option>
-                <option value="pengguna_produksi">Pengguna Produksi</option>
-            </select>
-            <a href="Login.ph"><button type="submit">Register</button></a>
+            <label for="confirmPassword" class="form-label">Confirm Password*</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" placeholder="Confirm Password" required>
+
+            <button type="submit">Register</button>
         </form>
     </section>
 </body>
