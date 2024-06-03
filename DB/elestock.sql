@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Bulan Mei 2024 pada 13.24
+-- Waktu pembuatan: 03 Jun 2024 pada 13.50
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -29,7 +29,55 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `locations` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `locations`
+--
+
+INSERT INTO `locations` (`id`, `name`, `description`) VALUES
+(1, 'Gudang Utama', 'Lokasi penyimpanan utama'),
+(5, 'Gudang A', 'Lokasi penyimpanan tambahan A'),
+(6, 'Gudang B', 'Lokasi penyimpanan tambahan B');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `specification` text DEFAULT NULL,
+  `stock` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `category`, `specification`, `stock`, `supplier_id`, `location_id`) VALUES
+(1, 'Laptop ASUS X412	', 'Laptop', 'Intel Core i5, RAM 8GB, SSD 256GB', 15, 1, 1),
+(2, 'Smartphone Xiaomi Redmi Note 10', 'Smartphone', 'Snapdragon 678, RAM 6GB, 128GB', 25, 2, 2),
+(3, 'Monitor LG 24MK430H-B', 'Monitor', '24 inch, Full HD, IPS Panel', 10, 3, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sales_reports`
+--
+
+CREATE TABLE `sales_reports` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `sale_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -41,7 +89,9 @@ CREATE TABLE `locations` (
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `contact` varchar(100) DEFAULT NULL
+  `contact_person` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -64,7 +114,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
 (1, 'admin', 'admin@elestock.com', '$2y$10$ITlK8GOkwNIAB7G70xPlCepXwsT4/uBflC.HVFX/ao/zS2gDzbuDe', 1),
-(2, 'Aldo', 'aldopratama0707@gmail.com', '$2y$10$jMa2tRgUuQTssWtfclgNtOZP2uRAZZ1KfxChpHzOULj3iXExpbZx2', 0);
+(2, 'Aldo', 'aldopratama0707@gmail.com', '$2y$10$jMa2tRgUuQTssWtfclgNtOZP2uRAZZ1KfxChpHzOULj3iXExpbZx2', 0),
+(3, 'Budi', 'wow@sharklasers.com', '$2y$10$ACZrlJSREW.ybVIh69eBJODY9suKWo3EtGxnbZb7LxyIkabnhkwXG', 0);
 
 --
 -- Indexes for dumped tables
@@ -74,6 +125,18 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
 -- Indeks untuk tabel `locations`
 --
 ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `sales_reports`
+--
+ALTER TABLE `sales_reports`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -96,6 +159,18 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `locations`
 --
 ALTER TABLE `locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `sales_reports`
+--
+ALTER TABLE `sales_reports`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -108,7 +183,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

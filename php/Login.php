@@ -55,14 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="text-blue">Elestock</span>
             </h2>
             
-            <form action="Login.html" method="post">
+            <form action="Login.php" method="post">
                 <h3>Login User</h3>
                 <h5>Sign in with your email/username and password</h5>
                 <label for="username" class="form-label">Email/Username*</label>
                 <input type="text" id="username" name="username" class="form-input" placeholder="Email/Username" required>
         
                 <label for="password" class="form-label">password*</label>
-                <input type="text" id="password" name="password" class="form-input" placeholder="password" required>
+                <input type="password" id="password" name="password" class="form-input" placeholder="password" required>
         
                 <button type="submit">LOGIN</button>
             </form>
