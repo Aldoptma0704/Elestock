@@ -25,7 +25,7 @@
                         <a class="nav-link active" aria-current="page" href="location.php">Location</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Supplier</a>
+                        <a class="nav-link" href="supplier.php">Supplier</a>
                     </li>
                 </ul>
             </div>
@@ -60,8 +60,8 @@
                             <td>".$row["name"]."</td>
                             <td>".$row["description"]."</td>
                             <td>
-                                <a href='edit_location.php?id=".$row["id"]."'>Edit</a>
-                                <a href='delete_location.php?id=".$row["id"]."'>Delete</a>
+                                <a href='edit_location.php?id=".$row["id"]."'class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='delete_location.php?id=".$row["id"]."'class='btn btn-danger btn-sm'>Delete</a>
                             </td>
                         </tr>";
                     }

@@ -7,28 +7,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/dashboard.css">
-    <title>Dashboaard</title>
+    <title>Dashboard</title>
 </head>
 <body>
  
     <nav class="navbar navbar-expand-lg text-light">
         <div class="container-fluid">
-                <a class="navbar-brand" href="dashboard.php"><img src="../IMG/Logo.svg" alt="Logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="dashboard.php"><img src="../IMG/Logo.svg" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="dashboard.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="dashboard.php">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="location.php">Location</a>
+                        <a class="nav-link" href="location.php">Location</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Suplier</a>
+                        <a class="nav-link" href="supplier.php">Supplier</a>
+                    </li>
                 </ul>
-                </div>
+            </div>
         </div>
     </nav>
     <div class="sidebar">
@@ -50,40 +51,36 @@
                         <th>Kategori</th>
                         <th>Spesifikasi</th>
                         <th>Stok</th>
-                        <!-- <th>supplier_id</th> -->
-                        <th>location_id</th>
+                        <th>Lokasi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
                     $result = $conn->query("SELECT * FROM products");
-                    while($row = $result->fetch_assoc()){
-                        
-                        // $supplier_id = $row["supplier_id"];
-                        // $supplier_result = $conn->query("SELECT name FROM suppliers WHERE id = $supplier_id");
-                        // $supplier_row = $supplier_result->fetch_assoc();
-                        // $supplier_name = $supplier_row["name"];
-
-                        $location_id = $row["location_id"];
-                        $location_result = $conn->query("SELECT id FROM locations WHERE id = $location_id");
-                        $location_row = $location_result->fetch_assoc();
-                        $location_name = $location_row["id"];
-
-                        echo "<tr>
-                        <td>".$row["id"]."</td>
-                        <td>".$row["name"]."</td>
-                        <td>".$row["category"]."</td>
-                        <td>".$row["specification"]."</td>
-                        <td>".$row["stock"]."</td>
-                        <td>".$location_name."</td>
-                        <td>
-                        <a href='edit_produk.php?id=".$row["id"]."'>Edit</a>
-                        <a href='delete_produk.php?id=".$row["id"]."'>Delete</a>
-                        </td>
-                        </tr>";
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            $location_id = $row["location_id"];
+                            $location_result = $conn->query("SELECT name FROM locations WHERE id = $location_id");
+                            $location_name = $location_result->num_rows > 0 ? $location_result->fetch_assoc()["name"] : "Unknown";
+                            
+                            echo "<tr>
+                                <td>".$row["id"]."</td>
+                                <td>".$row["name"]."</td>
+                                <td>".$row["category"]."</td>
+                                <td>".$row["specification"]."</td>
+                                <td>".$row["stock"]."</td>
+                                <td>".$location_name."</td>
+                                <td>
+                                    <a href='editproduka.php?id=".$row["id"]."' class='btn btn-warning btn-sm'>Edit</a>
+                                    <a href='delete_produk.php?id=".$row["id"]."' class='btn btn-danger btn-sm'>Delete</a>
+                                </td>
+                            </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='7' class='text-center'>No products found</td></tr>";
                     }
-                    ?>
+                ?>
                 </tbody>
             </table>
         </div>
