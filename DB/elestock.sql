@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jun 2024 pada 13.50
+-- Waktu pembuatan: 06 Jun 2024 pada 01.52
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -64,8 +64,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `category`, `specification`, `stock`, `supplier_id`, `location_id`) VALUES
 (1, 'Laptop ASUS X412	', 'Laptop', 'Intel Core i5, RAM 8GB, SSD 256GB', 15, 1, 1),
-(2, 'Smartphone Xiaomi Redmi Note 10', 'Smartphone', 'Snapdragon 678, RAM 6GB, 128GB', 25, 2, 2),
-(3, 'Monitor LG 24MK430H-B', 'Monitor', '24 inch, Full HD, IPS Panel', 10, 3, 0);
+(2, 'Smartphone Xiaomi Redmi Note 10', 'Smartphone', 'Snapdragon 678, RAM 6GB, 128GB', 25, 2, 5),
+(3, 'Monitor LG 24MK430H-B', 'Monitor', '24 inch, Full HD, IPS Panel', 10, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -91,8 +91,18 @@ CREATE TABLE `suppliers` (
   `name` varchar(100) NOT NULL,
   `contact_person` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
+  `phone` varchar(20) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `name`, `contact_person`, `email`, `phone`, `product_id`) VALUES
+(1, 'ASUS Indonesia', 'Budi Santoso', 'budi@asus.co.id', '081234567890', NULL),
+(2, 'Xiaomi Store', 'Lisa Tan', 'lisa@xiaomi.com', '087654321098', 1),
+(3, 'LG Electronics', 'Bambang Sudarsa', 'bambang@lgelectronics.com', '089876543210', NULL);
 
 -- --------------------------------------------------------
 
@@ -177,7 +187,7 @@ ALTER TABLE `sales_reports`
 -- AUTO_INCREMENT untuk tabel `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
