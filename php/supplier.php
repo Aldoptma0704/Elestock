@@ -34,6 +34,13 @@ include('Koneksi.php');
             </div>
         </div>
     </nav>
+    <div class="sidebar">
+        <a href="dashboard.php"><i class="lni lni-clipboard"></i></a><br>
+        <a href="dashboard.php"><i class="lni lni-graph"></i></a><br>
+        <a href="dashboard.php"><i class="lni lni-stats-up"></i></a><br>
+        <a href="dashboard.php"><i class="lni lni-dropbox"></i></a><br>
+        <a href="dashboard.php"><i class="lni lni-database"></i></a><br>
+    </div>
     <div class="container pt-5">
         <h2 class="text-center">Daftar Suppliers</h2>
         <a href="tambahsupplier.php" class="btn btn-success mb-3">Tambah Supplier</a>
