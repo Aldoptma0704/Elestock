@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            if (password_verify($password, $row['password'])) {
+            if ($password == $row['password']) {
                 $_SESSION['login_user'] = $username;
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['is_admin'] = $row['is_admin'];

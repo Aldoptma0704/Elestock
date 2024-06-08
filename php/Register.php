@@ -8,17 +8,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
 
     if (empty($email)) {
-        die("Email is required");
+        echo 'Email is required.';
+        header("Refresh: 2; url=Register.php");
     }
 
     if ($password !== $confirmPassword){
-        die("Passwords do not match");
     } else {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        $stmt->bind_param("sss", $username, $email, $password);
 
         if ($stmt->execute()) {
             header("Location: Login.php");
@@ -45,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="username" class="form-label">Username*</label>
             <input type="text" id="username" name="username" class="form-input" placeholder="username" required>
             <label for="email" class="form-label">Email*</label>
-            <input type="text" id="email" name="email" class="form-input" placeholder="email" required>
+            <input type="email" id="email" name="email" class="form-input" placeholder="email">
             <label for="password" class="form-label">Password*</label>
             <input type="password" id="password" name="password" class="form-input" placeholder="password" required>
             <label for="confirmPassword" class="form-label">Confirm Password*</label>

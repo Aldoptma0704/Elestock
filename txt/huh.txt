@@ -1,0 +1,19 @@
+Update gw
+
+- Memisahkan navbar menjadi file independen serta meng-include kan halaman yang membutuhkan navbar
+- Menghapus sistem hashing pada register dan login (untuk mempermudah membaca password)
+
+
+
+
+
+???
+
+- Mengelola kategori produk dan detail spesifikasinya.Monitoring Stok secara Real-time (?)
+- Menyediakan notifikasi dan alert untuk stok yang hampir habis. (?)
+- Menyetel level minimum stok untuk notifikasi. (?)
+- Mengidentifikasi tren penjualan dan rekomendasi restock. (?)
+- Mengelola hubungan dan negosiasi dengan supplier. (?)
+- Memantau kinerja supplier dan penilaian kualitas. (how)
+- Mengekspor laporan ke format yang diinginkan (misalnya PDF, Excel).
+
