@@ -19,10 +19,10 @@
             </div>
         </div>
     </nav>
-    <div class="sidebar">
+    <!-- <div class="sidebar">
         <a href="dashboard.php"><i class="lni lni-clipboard"></i></a><br>
         <a href="dashboard.php"><i class="lni lni-graph"></i></a><br>
         <a href="dashboard.php"><i class="lni lni-stats-up"></i></a><br>
         <a href="dashboard.php"><i class="lni lni-dropbox"></i></a><br>
         <a href="dashboard.php"><i class="lni lni-database"></i></a><br>
-    </div>
+    </div> -->
