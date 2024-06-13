@@ -14,7 +14,7 @@ include('Koneksi.php');
 </head>
 <body>
     <?php
-    include 'navbardashboard.php';
+    include 'navbardashboard_admin.php';
     ?>
     <div class="container pt-5">
         <h2 class="text-center">Daftar Suppliers</h2>

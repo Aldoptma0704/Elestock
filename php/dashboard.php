@@ -11,7 +11,7 @@
 </head>
 <body>
     <?php
-    include 'navbardashboard.php';
+    include 'navbardashboard_admin.php';
     ?>
 
     <main>
