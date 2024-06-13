@@ -15,7 +15,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="supplier.php">Supplier</a>
                     </li>
+                    
                 </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.php">
+                            <img src="../IMG/logout_icon.svg" alt="Logout">
+                        </a>
+                    </li>
             </div>
         </div>
     </nav>
