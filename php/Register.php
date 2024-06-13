@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <section class="register-section">
         <h1>Activate Your Account</h1>
-        <form action="register.php" method="post">
+        <form action="Register.php" method="post">
             <label for="username" class="form-label">Username*</label>
             <input type="text" id="username" name="username" class="form-input" placeholder="username" required>
             <label for="email" class="form-label">Email*</label>

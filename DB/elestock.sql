@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jun 2024 pada 01.52
+-- Waktu pembuatan: 13 Jun 2024 pada 14.11
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -123,9 +123,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
-(1, 'admin', 'admin@elestock.com', '$2y$10$ITlK8GOkwNIAB7G70xPlCepXwsT4/uBflC.HVFX/ao/zS2gDzbuDe', 1),
-(2, 'Aldo', 'aldopratama0707@gmail.com', '$2y$10$jMa2tRgUuQTssWtfclgNtOZP2uRAZZ1KfxChpHzOULj3iXExpbZx2', 0),
-(3, 'Budi', 'wow@sharklasers.com', '$2y$10$ACZrlJSREW.ybVIh69eBJODY9suKWo3EtGxnbZb7LxyIkabnhkwXG', 0);
+(1, 'admin', 'admin@elestock.com', 'admin1234', 1),
+(5, 'Aldo', 'aldopratama0707@gmail.com', 'aldo1234', 0);
 
 --
 -- Indexes for dumped tables
@@ -193,7 +192,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
