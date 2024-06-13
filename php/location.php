@@ -17,6 +17,7 @@
         <div class="container pt-5">
             <h2 class="text-center">Daftar Lokasi</h2>
             <a href="tambah_lokasi.php" class="btn btn-success mb-3">Tambah Lokasi</a>
+            <a href="export_laporan_daftar lokasi.php" class="btn btn-success mb-3">Export Laporan Daftar Lokasi</a>
             <table class="table">
                 <thead class="table-primary">
                     <tr>

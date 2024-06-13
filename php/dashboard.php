@@ -18,6 +18,7 @@
         <div class="container pt-5">
             <h2 class="text-center">Daftar Produk</h2>
             <a href="tambah_produk.php" class="btn btn-success mb-3">Tambah Produk</a>
+            <a href="export_laporan_daftar produk.php" class="btn btn-success mb-3">Export Laporan Daftar Produk</a>
             <table class="table">
                 <thead class="table-primary">
                     <tr>

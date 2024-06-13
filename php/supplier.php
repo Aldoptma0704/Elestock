@@ -19,6 +19,7 @@ include('Koneksi.php');
     <div class="container pt-5">
         <h2 class="text-center">Daftar Suppliers</h2>
         <a href="tambahsupplier.php" class="btn btn-success mb-3">Tambah Supplier</a>
+        <a href="export_laporan_daftar suppliers.php" class="btn btn-success mb-3">Export Laporan Daftar Suppliers</a>
         <table class="table">
             <thead class="table-primary">
                 <tr>
