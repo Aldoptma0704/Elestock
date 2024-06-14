@@ -18,7 +18,7 @@
                     
                 </ul>
                     <li class="nav-item">
-                        <a class="nav-link" href="Login.php">
+                        <a class="nav-link" href="logout.php">
                             <img src="../IMG/logout_icon.svg" alt="Logout">
                         </a>
                     </li>
