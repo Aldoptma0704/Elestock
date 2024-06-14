@@ -1,4 +1,5 @@
 <?php
+session_start();
 $sarvername = "localhost";
 $username = "root";
 $password = "";

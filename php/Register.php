@@ -1,6 +1,10 @@
 <?php
 include('Koneksi.php');
-
+include 'auth.php';
+if (isset($_SESSION['login_user'])){
+    header("Location: HomePage.php");
+    exit();
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $email = isset($_POST['email']) ? $_POST['email'] : '';

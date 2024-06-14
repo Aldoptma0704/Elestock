@@ -1,3 +1,6 @@
+<?php
+include 'auth.php';
+?>
     <nav class="navbar navbar-expand-lg text-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="HomePage.php"><img src="../IMG/Logo.svg" alt="Logo"></a>

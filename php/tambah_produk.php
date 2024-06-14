@@ -1,4 +1,4 @@
-<?php include 'Koneksi.php' ; ?>
+<?php include 'Koneksi.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +30,15 @@
                 <input type="text" class="form-control" id="stock" name="stock" placeholder="stock" required>
             </div>
             <div class="mb-3">
-                <label for="supplier_id" class="form-label fw-semibold">supplier_id</label>
-                <input type="text" class="form-control" id="supplier_id" name="supplier_id" placeholder="supplier_id" required>
+                <label for="location_id" class="form-label">Location</label>
+                <select class="form-control" id="location_id" name="location_id" required>
+                    <?php
+                    $location_result = $conn->query("SELECT id, name FROM locations");
+                    while ($location = $location_result->fetch_assoc()) {
+                        echo "<option value='".$location['id']."'>".$location['name']."</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <button type="submit" class="btn btn-secondary w-100">Tambah Barang</button>
         </form>
@@ -42,10 +49,10 @@
             $category = $_POST['category'];
             $specification = $_POST['specification'];
             $stock = $_POST['stock'];
-            $supplier_id = $_POST['supplier_id'];
+            $location_id = $_POST['location_id'];
 
-            $stmt = $conn->prepare("INSERT INTO products (name, category, specification, stock, supplier_id) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $name, $category, $specification, $stock, $supplier_id);
+            $stmt = $conn->prepare("INSERT INTO products (name, category, specification, stock, location_id) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $name, $category, $specification, $stock, $location_id);
             if($stmt->execute()){
                 echo "Produk baru berhasil ditambahkan";
             }else{

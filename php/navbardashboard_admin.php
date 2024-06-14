@@ -1,3 +1,13 @@
+<?php
+include 'authadmin.php';
+
+
+if ($akses !== 1){
+    header("Location: HomePage.php");
+    
+}
+?>    
+
     <nav class="navbar navbar-expand-lg text-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="dashboard_admin.php"><img src="../IMG/Logo.svg" alt="Logo"></a>
@@ -18,7 +28,7 @@
                     
                 </ul>
                     <li class="nav-item">
-                        <a class="nav-link" href="Login.php">
+                        <a class="nav-link" href="logout.php">
                             <img src="../IMG/logout_icon.svg" alt="Logout">
                         </a>
                     </li>
