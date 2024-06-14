@@ -1,13 +1,13 @@
     <nav class="navbar navbar-expand-lg text-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.php"><img src="../IMG/Logo.svg" alt="Logo"></a>
+            <a class="navbar-brand" href="dashboard_admin.php"><img src="../IMG/Logo.svg" alt="Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="dashboard.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="dashboard.php">Produk</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="location.php">Location</a>

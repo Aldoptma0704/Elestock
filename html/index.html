@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elestock</title>
+<style>
+    @import url('https://fonts.cdnfonts.com/css/anurati');
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+    }
+    .text-container {
+        flex: 1;
+        margin-right: 20px;
+    }
+    h1 {
+        font-family: 'Anurati', sans-serif;
+        color: #0934f3;
+        font-size: 35px;
+        margin-top: 30%;
+        margin-bottom: 40px;
+    }
+    p {
+        color: #000000;
+        line-height: 1.6;
+    }
+    .image-container {
+        flex: 1;
+        margin-top: 10%;
+        margin-left: 10%;
+        text-align: center;
+    }
+    .image-container img {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+    }
+    .button {
+        display: inline-block;
+        margin-top: 10%;
+        padding: 10px 20px;
+        background-color: transparent;
+        color: #477bff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 25px;
+        border: 2px solid #477bff;
+        transition: background-color 0.3s ease;
+    }
+    .button:hover {
+        background-color: #477bff;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="text-container">
+        <h1>Elestock</h1>
+        <p>Selamat datang di Elestock.</p>
+        <p>Kami menyediakan solusi efektif untuk pengelolaan stok yang lebih mudah dan efisien. Mulai telusuri dan kelola inventaris Anda dengan cepat dan akurat bersama kami.</p>
+        <a href="../php/Login.php" class="button">Let's Started</a>
+    </div>
+    <div class="image-container">
+        <img src="../IMG/Logo.svg" alt="Elestock Image">
+    </div>
+</div>
+</body>
+</html>
